@@ -4,16 +4,17 @@ import EntryEditor from "./components/EntryEditor.vue";
 import EntryCard from "@/components/EntryCard.vue";
 import {reactive} from "vue";
 import type User from "@/types/User";
-import type Emoji from "@/types/Emoji";
+import type Entry from "@/types/Entry";
 
 const user: User = reactive({
     id: 1,
     username: 'John Doe',
     settings: []
 });
+const entries: Entry[] = reactive([]);
 
-const handleCreateEntry = (entry: {text: string, emoji: Emoji | null }) => {
-    console.log(entry);
+const handleCreateEntry = (entry: Entry) => {
+    entries.push(entry);
 }
 
 console.log(user.id);
@@ -24,7 +25,7 @@ console.log(user.id);
         <TheHeader/>
         <EntryEditor @@create="handleCreateEntry"/>
         <ul>
-            <li>
+            <li v-for="entry in entries" :key="entry.id">
                 <EntryCard/>
             </li>
         </ul>

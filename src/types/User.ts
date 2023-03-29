@@ -1,5 +1,5 @@
 export default interface User {
     id: number;
-    username: string,
-    settings: string[]
+    username: string;
+    settings: string[];
 }
