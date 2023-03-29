@@ -26,7 +26,7 @@ console.log(user.id);
         <EntryEditor @@create="handleCreateEntry"/>
         <ul>
             <li v-for="entry in entries" :key="entry.id">
-                <EntryCard/>
+                <EntryCard :entry="entry"/>
             </li>
         </ul>
     </main>
